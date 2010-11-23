@@ -1,6 +1,6 @@
 = zeus-api
 
-Description goes here.
+Ruby control API for Zeus Load Balancer and Zeus Traffic Manager.
 
 == Contributing to zeus-api
  
@@ -14,6 +14,5 @@ Description goes here.
 
 == Copyright
 
-Copyright (c) 2010 David Peterson. See LICENSE.txt for
-further details.
+Copyright (c) 2010 David Peterson. See LICENSE.txt for further details.
 
