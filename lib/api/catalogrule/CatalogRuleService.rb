@@ -122,8 +122,8 @@ class CatalogRuleService
   #
   # Examples
   #   text(name, text)  - Sets the text for a rule called "name"
-  def text(name, note)
-    @driver.setRuleText([name], [note])
+  def text(name, text)
+    @driver.setRuleText([name], [text])
   end
 
 end
