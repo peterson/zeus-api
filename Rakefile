@@ -15,13 +15,13 @@ Jeweler::Tasks.new do |gem|
   gem.name = "zeus-api"
   gem.homepage = "http://github.com/peterson/zeus-api"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Ruby control API for Zeus Load Balancer and Zeus Traffic Manager}
+  gem.description = %Q{This gem implements a wrapper to the SOAP control API provided by Zeus Load Balance (ZLB) and Zeus Traffic Manager (ZTM).}
   gem.email = "peterson@orbitec.com.au"
   gem.authors = ["David Peterson"]
   # Include your dependencies below. Runtime dependencies are required when using your gem,
   # and development dependencies are only needed for development (ie running rake tasks, tests, etc)
-  #  gem.add_runtime_dependency 'jabber4r', '> 0.1'
+  gem.add_runtime_dependency 'soap4r', '> 1.5.8'
   #  gem.add_development_dependency 'rspec', '> 1.2.3'
 end
 Jeweler::RubygemsDotOrgTasks.new
