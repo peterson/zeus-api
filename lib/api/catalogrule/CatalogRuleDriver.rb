@@ -1,5 +1,5 @@
-require 'CatalogRule.rb'
-require 'CatalogRuleMappingRegistry.rb'
+require 'lib/api/catalogrule/CatalogRule.rb'
+require 'lib/api/catalogrule/CatalogRuleMappingRegistry.rb'
 require 'soap/rpc/driver'
 
 class CatalogRulePort < ::SOAP::RPC::Driver

@@ -1,4 +1,4 @@
-require 'VirtualServer.rb'
+require 'lib/api/virtualserver/VirtualServer.rb'
 
 require 'rubygems'
 gem 'soap4r'

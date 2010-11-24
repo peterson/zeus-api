@@ -1,5 +1,4 @@
-require "VirtualServerDriver.rb"
-require "VirtualServer.rb"
+require 'lib/api/virtualserver/VirtualServerDriver.rb'
 
 #
 # VirtualServerService
@@ -16,7 +15,7 @@ class VirtualServerService
     @driver.options["protocol.http.basic_auth"] << [endpoint, username, password]
   end
 
-  # Returns virtual server names
+  # Returns a list of virtual servers
   #
   # Args
   #   status            - Symbol (possible values: :all, :enabled, :disabled)
@@ -26,7 +25,7 @@ class VirtualServerService
   #   names(:enabled)   - Returns enabled virtual server names
   #   names(:disabled)  - Returns disabled virtual server names
   #
-  def names(status=nil)
+  def list(status=nil)
     result = []
     valid_status = [:all, :enabled, :disabled]
     status = :all if status.nil? or !valid_status.include?(status)
@@ -95,6 +94,64 @@ class VirtualServerService
   #
   def disable(vs_name=nil)
     @driver.setEnabled([vs_name], [false])
+  end
+  
+  # Adds a request rule (and enables it)
+  #
+  # Args
+  #   name (String)          - Virtual server's name
+  #   rule (String)          - Rule name
+  #
+  # Examples
+  #   add_request_rule("test", "some-rule")
+  #  
+  def add_request_rule(vs_name, rule)
+    vsr = VirtualServerRule.new
+    vsr.name = rule
+    vsr.enabled = true
+    @driver.addRules([vs_name],[[vsr]])
+  end  
+
+  # Removes a request rule
+  #
+  # Args
+  #   name (String)          - Virtual server's name
+  #   rule (String)          - Rule name
+  #
+  # Examples
+  #   remove_request_rule("test", "some-rule")
+  #  
+  def remove_request_rule(vs_name, rule)
+    @driver.removeRules([vs_name], [[rule]])
+  end
+
+  # Adds a response rule (and enables it)
+  #
+  # Args
+  #   name (String)          - Virtual server's name
+  #   rule (String)          - Rule name
+  #
+  # Examples
+  #   add_request_rule("test", "some-rule")
+  #    
+  def add_response_rule(vs_name, rule)
+    vsr = VirtualServerRule.new
+    vsr.name = rule
+    vsr.enabled = true
+    @driver.addResponseRules([vs_name], [[vsr]])
+  end
+  
+  # Removes a response rule
+  #
+  # Args
+  #   name (String)          - Virtual server's name
+  #   rule (String)          - Rule name
+  #
+  # Examples
+  #   remove_response_rule("test", "some-rule")
+  #  
+  def remove_response_rule(vs_name, rule)
+    @driver.removeResponseRules([vs_name], [[rule]])
   end
 
 end

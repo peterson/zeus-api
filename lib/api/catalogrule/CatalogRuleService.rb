@@ -1,5 +1,4 @@
-require "CatalogRuleDriver.rb"
-require "CatalogRuleServer.rb"
+require "lib/api/catalogrule/CatalogRuleDriver.rb"
 
 #
 # CatalogRuleService
@@ -30,16 +29,64 @@ class CatalogRuleService
     @driver.addRule([name], [text])
   end
 
-  # Checks the text of a rule
+  # List rules by name
+  #
+  # Args
+  #   None
+  #
+  # Examples
+  #   list - Returns a list of rule names
+  #  
+  def list
+    @driver.getRuleNames
+  end
+
+  # Checks whether the text of a rule is valid TrafficScript
   #
   # Args
   #   text (String)   - Rule text
   #
+  # Returns
+  #   valid (boolean)  - True if valid
+  #
   # Examples
-  #   check("text_of_rule")  - Calls a check on the rule, returns valid, warning or error
+  #   valid?("text_of_rule")  - Calls a check on the rule, returns boolean
   #  
-  def check(text)
-    res = @driver.checkSyntax(text)
+  def valid?(text)
+    res = @driver.checkSyntax([text])
+    return res.first.valid
+  end
+
+  # Returns a list of errors for the rule
+  #
+  # Args
+  #   text (String)   - Rule text
+  #
+  # Returns
+  #   errors (Array)  - Array of errors
+  #
+  # Examples
+  #   errors("text_of_rule")
+  #    
+  def errors(text)
+    res = @driver.checkSyntax([text])
+    return res.first.errors
+  end
+
+  # Returns a list of warnings for the rule
+  #
+  # Args
+  #   text (String)   - Rule text
+  #
+  # Returns
+  #   warnings (Array)  - Array of errors
+  #
+  # Examples
+  #   warnings("text_of_rule")
+  #    
+  def warnings(text)
+    res = @driver.checkSyntax([text])
+    return res.first.warnings
   end
 
   # Copies a rule
@@ -75,22 +122,10 @@ class CatalogRuleService
   # Returns
   #
   # Examples
-  #   details(name)        - Deletes rule called "name"
+  #   details(name)        - returns CatalogRuleRuleInfo object for rule
   #  
   def details(name)
-    @driver.getRuleDetails([name]).first   # get first info
-  end
-
-  # Fetches the list of rules by name
-  #
-  # Args
-  #   None
-  #
-  # Examples
-  #   names              - Deletes rule called "name"
-  #  
-  def names
-    @driver.getRuleNames
+    @driver.getRuleDetails([name]).first
   end
 
   # Renames a rule
@@ -104,26 +139,35 @@ class CatalogRuleService
     @driver.renameRule([name], [new_name])
   end
 
-  # Sets the note for a rule
+  # Sets or returns the note for a rule
   #
   #   name (String)       - Name of rule
   #   note (String)       - Text of note
   #
   # Examples
   #   note(name, note)  - Sets the note for a rule called "name"
-  def note(name, note)
-    @driver.setRuleNote([name], [note])
+  def note(name, note=nil)
+    if note.nil?
+      details(name).rule_notes
+    else
+      @driver.setRuleNotes([name], [note])
+    end
+
   end
 
-  # Sets the text for a rule
+  # Sets or returns the text for a rule
   #
   #   name (String)       - Name of rule
   #   text (String)       - Text of rule
   #
   # Examples
   #   text(name, text)  - Sets the text for a rule called "name"
-  def text(name, text)
-    @driver.setRuleText([name], [text])
+  def text(name, text=nil)
+    if text.nil?
+      details(name).rule_text
+    else
+      @driver.setRuleText([name], [text])
+    end
   end
 
 end

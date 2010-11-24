@@ -1,5 +1,5 @@
-require 'Pool.rb'
-require 'PoolMappingRegistry.rb'
+require 'lib/api/pool/Pool.rb'
+require 'lib/api/pool/PoolMappingRegistry.rb'
 require 'soap/rpc/driver'
 
 class PoolPort < ::SOAP::RPC::Driver
