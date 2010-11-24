@@ -42,7 +42,8 @@ Gem::Specification.new do |s|
     "lib/zeus-api.rb",
     "sample/simple.rb",
     "test/helper.rb",
-    "test/test_zeus-api.rb"
+    "test/test_zeus-api.rb",
+    "zeus-api.gemspec"
   ]
   s.homepage = %q{http://github.com/peterson/zeus-api}
   s.licenses = ["MIT"]
