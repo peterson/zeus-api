@@ -1,4 +1,3 @@
-require 'lib/api/catalogrule/CatalogRule.rb'
 
 require 'rubygems'
 gem 'soap4r'

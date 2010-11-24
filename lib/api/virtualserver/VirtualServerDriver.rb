@@ -1,5 +1,3 @@
-require 'lib/api/virtualserver/VirtualServer.rb'
-require 'lib/api/virtualserver/VirtualServerMappingRegistry.rb'
 require 'soap/rpc/driver'
 
 class VirtualServerPort < ::SOAP::RPC::Driver

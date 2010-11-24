@@ -136,7 +136,7 @@ puts obj.getFTPSupportRfc2428(names)
 #   getFailpool(names)
 #
 # ARGS
-#   names           StringArray - {http://soap.zeus.com/zxtm/1.0/}StringArray
+#   names           StringArray - {http://soap.zeus.comm/zxtm/1.0/}StringArray
 #
 # RETURNS
 #   values          StringArray - {http://soap.zeus.com/zxtm/1.0/}StringArray

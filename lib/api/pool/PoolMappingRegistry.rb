@@ -1,4 +1,3 @@
-require 'lib/api/pool/Pool.rb'
 
 require 'rubygems'
 gem 'soap4r'

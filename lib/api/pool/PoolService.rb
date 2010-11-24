@@ -1,4 +1,3 @@
-require "lib/api/pool/PoolDriver.rb"
 
 #
 # PoolService
