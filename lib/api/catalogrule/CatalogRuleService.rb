@@ -145,6 +145,7 @@ class CatalogRuleService
   #
   # Examples
   #   note(name, note)  - Sets the note for a rule called "name"
+  #   note(name) - Returns the note for the rule "name"
   def note(name, note=nil)
     if note.nil?
       details(name).rule_notes
@@ -161,6 +162,7 @@ class CatalogRuleService
   #
   # Examples
   #   text(name, text)  - Sets the text for a rule called "name"
+  #   text(name) - Returns the text for the rule "name"
   def text(name, text=nil)
     if text.nil?
       details(name).rule_text

@@ -71,6 +71,44 @@ class VirtualServerService
     @driver.addVirtualServer([name], [vs_basic_info])
   end
 
+  # Copies a virtual server
+  #
+  # Args
+  #   name (String)       - Name of current virtual server
+  #   new_name (String)   - Name of new virtual server
+  #
+  # Examples
+  #   copy(name, new_name)  - Copies VS called "name" to a new VS called "new_name"
+  #  
+  def copy(name, new_name)
+    @driver.copyVirtualServer([name], [new_name])
+  end
+
+  # Renames a virtual server
+  #
+  # Args
+  #   name (String)       - Current name of virtual server
+  #   new_name (String)   - New name of virtual server
+  #
+  # Examples
+  #   rename(name, new_name)  - Renames VS "name" to "new_name"
+  #  
+  def rename(name, new_name)
+    @driver.renameVirtualServer([name], [new_name])
+  end
+  
+  # Deletes a virtual server
+  #
+  # Args
+  #   name (String)       - Name of virtual server
+  #
+  # Examples
+  #   delete("test")        - Deletes virtual server called "test"
+  #  
+  def delete(name)
+    @driver.deleteVirtualServer([name])
+  end
+
   # Enables a virtual server
   #
   # Args
@@ -89,10 +127,26 @@ class VirtualServerService
   #   name (String)          - Virtual server's name to disable
   #
   # Examples
-  #   disable("web")         - Disables a virtual server called "web"
+  #   disable("name")         - Disables a virtual server called "name"
   #
   def disable(vs_name=nil)
     @driver.setEnabled([vs_name], [false])
+  end
+
+  # Checks whether the virtual server is enabled
+  #
+  # Args
+  #   vs_name (String) - Virtual server's name
+  #
+  # Returns
+  #   valid (boolean)  - True if valid
+  #
+  # Examples
+  #   enabled?("test")  - Checks whether VS "test" is enabled
+  #  
+  def enabled?(vs_name)
+    res = @driver.getEnabled([vs_name])
+    return res.first
   end
   
   # Adds a request rule (and enables it)

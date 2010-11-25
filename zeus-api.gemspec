@@ -5,12 +5,12 @@
 
 Gem::Specification.new do |s|
   s.name = %q{zeus-api}
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["David Peterson"]
-  s.date = %q{2010-11-24}
-  s.description = %q{This gem implements a wrapper to the SOAP control API provided by Zeus Load Balance (ZLB) and Zeus Traffic Manager (ZTM).}
+  s.date = %q{2010-11-25}
+  s.description = %q{This gem implements a wrapper to the SOAP control API provided by Zeus Load Balancer (ZLB) and Zeus Traffic Manager (ZTM).}
   s.email = %q{peterson@orbitec.com.au}
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -41,8 +41,6 @@ Gem::Specification.new do |s|
     "lib/api/virtualserver/VirtualServerService.rb",
     "lib/zeus-api.rb",
     "sample/simple.rb",
-    "test/helper.rb",
-    "test/test_zeus-api.rb",
     "zeus-api.gemspec"
   ]
   s.homepage = %q{http://github.com/peterson/zeus-api}
@@ -51,8 +49,8 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{Ruby control API for Zeus Load Balancer and Zeus Traffic Manager}
   s.test_files = [
-    "test/helper.rb",
-    "test/test_zeus-api.rb"
+    "spec/spec_helper.rb",
+    "spec/virtualserver_spec.rb"
   ]
 
   if s.respond_to? :specification_version then
@@ -60,24 +58,30 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_development_dependency(%q<shoulda>, [">= 0"])
+      s.add_runtime_dependency(%q<soap4r>, [">= 1.5.8"])
+      s.add_development_dependency(%q<rspec>, ["~> 2.1.0"])
       s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.5.1"])
       s.add_development_dependency(%q<rcov>, [">= 0"])
       s.add_runtime_dependency(%q<soap4r>, [">= 1.5.8"])
+      s.add_development_dependency(%q<rspec>, ["> 1.2.3"])
     else
-      s.add_dependency(%q<shoulda>, [">= 0"])
+      s.add_dependency(%q<soap4r>, [">= 1.5.8"])
+      s.add_dependency(%q<rspec>, ["~> 2.1.0"])
       s.add_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_dependency(%q<jeweler>, ["~> 1.5.1"])
       s.add_dependency(%q<rcov>, [">= 0"])
       s.add_dependency(%q<soap4r>, [">= 1.5.8"])
+      s.add_dependency(%q<rspec>, ["> 1.2.3"])
     end
   else
-    s.add_dependency(%q<shoulda>, [">= 0"])
+    s.add_dependency(%q<soap4r>, [">= 1.5.8"])
+    s.add_dependency(%q<rspec>, ["~> 2.1.0"])
     s.add_dependency(%q<bundler>, ["~> 1.0.0"])
     s.add_dependency(%q<jeweler>, ["~> 1.5.1"])
     s.add_dependency(%q<rcov>, [">= 0"])
     s.add_dependency(%q<soap4r>, [">= 1.5.8"])
+    s.add_dependency(%q<rspec>, ["> 1.2.3"])
   end
 end
 

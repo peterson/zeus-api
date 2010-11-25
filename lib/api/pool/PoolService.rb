@@ -210,7 +210,7 @@ class PoolService
   #   node (String)     - Node ("host:port")
   #
   # Examples
-  #   remove_draining_node("pool", "host:80")
+  #   undrain_node("pool", "host:80")
   #
   def undrain_node(name, node)
     @driver.removeDrainingNodes([name], [[node]])
@@ -223,7 +223,7 @@ class PoolService
   #   nodes (Array)     - Nodes (["host1:port", "host2:port"])
   #
   # Examples
-  #   remove_draining_nodes("pool",["host1:80", "host2:80"])
+  #   undrain_nodes("pool",["host1:80", "host2:80"])
   #  
   def undrain_nodes(name, nodes)
     @driver.removeDrainingNodes([name], [nodes])
