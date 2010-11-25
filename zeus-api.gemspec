@@ -41,6 +41,8 @@ Gem::Specification.new do |s|
     "lib/api/virtualserver/VirtualServerService.rb",
     "lib/zeus-api.rb",
     "sample/simple.rb",
+    "spec/spec_helper.rb",
+    "spec/virtualserver_spec.rb",
     "zeus-api.gemspec"
   ]
   s.homepage = %q{http://github.com/peterson/zeus-api}
