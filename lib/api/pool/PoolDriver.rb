@@ -607,6 +607,33 @@ class PoolPort < ::SOAP::RPC::Driver
       { :request_style =>  :rpc, :request_use =>  :encoded,
         :response_style => :rpc, :response_use => :encoded,
         :faults => {} }
+    ],
+    [ XSD::QName.new(NsPool, "getDisabledNodes"),
+      "http://soap.zeus.com/zxtm/1.0/Pool/getDisabledNodes",
+      "getDisabledNodes",
+      [ ["in", "names", ["StringArray", "http://soap.zeus.com/zxtm/1.0/", "StringArray"]],
+        ["retval", "values", ["StringArrayArray", "http://soap.zeus.com/zxtm/1.0/", "StringArrayArray"]] ],
+      { :request_style =>  :rpc, :request_use =>  :encoded,
+        :response_style => :rpc, :response_use => :encoded,
+        :faults => {} }
+    ],
+    [ XSD::QName.new(NsPool, "disableNodes"),
+      "http://soap.zeus.com/zxtm/1.0/Pool/disableNodes",
+      "disableNodes",
+      [ ["in", "names", ["StringArray", "http://soap.zeus.com/zxtm/1.0/", "StringArray"]],
+        ["in", "values", ["StringArrayArray", "http://soap.zeus.com/zxtm/1.0/", "StringArrayArray"]] ],
+      { :request_style =>  :rpc, :request_use =>  :encoded,
+        :response_style => :rpc, :response_use => :encoded,
+        :faults => {} }
+    ],
+    [ XSD::QName.new(NsPool, "enableNodes"),
+      "http://soap.zeus.com/zxtm/1.0/Pool/enableNodes",
+      "enableNodes",
+      [ ["in", "names", ["StringArray", "http://soap.zeus.com/zxtm/1.0/", "StringArray"]],
+        ["in", "values", ["StringArrayArray", "http://soap.zeus.com/zxtm/1.0/", "StringArrayArray"]] ],
+      { :request_style =>  :rpc, :request_use =>  :encoded,
+        :response_style => :rpc, :response_use => :encoded,
+        :faults => {} }
     ]
   ]
 
