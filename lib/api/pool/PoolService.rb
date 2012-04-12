@@ -111,7 +111,7 @@ class PoolService
   #
   def list_nodes(name, status=nil)
     result = []
-    valid_status = [:all, :draining]
+    valid_status = [:all, :draining, :disabled]
     status = :all if status.nil? or !valid_status.include?(status)
     
     case status
@@ -119,6 +119,8 @@ class PoolService
       result = @driver.getNodes([name])
     when :draining
       result = @driver.getDrainingNodes([name])
+    when :disabled
+      result = @driver.getDisabledNodes([name])
     end
 
     return result
@@ -240,6 +242,32 @@ class PoolService
   #    
   def connection_count(node)
     @driver.getNodesConnectionCounts([node])
+  end
+
+  # Disable nodes
+  #
+  # Args
+  #   name (String)     - Pool name
+  #   nodes (Array)     - Nodes (["host1:port", "host2:port"])
+  #
+  # Examples
+  #   disable_nodes("pool",["host1:80", "host2:80"])
+  #  
+  def disable_nodes(name, nodes)
+    @driver.disableNodes([name], [nodes])
+  end
+
+  # Enable nodes
+  #
+  # Args
+  #   name (String)     - Pool name
+  #   nodes (Array)     - Nodes (["host1:port", "host2:port"])
+  #
+  # Examples
+  #   enable_nodes("pool",["host1:80", "host2:80"])
+  #  
+  def enable_nodes(name, nodes)
+    @driver.enableNodes([name], [nodes])
   end
 
 end
